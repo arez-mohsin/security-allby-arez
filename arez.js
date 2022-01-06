@@ -20,8 +20,8 @@ const Discord = require("discord.js");
 const cmd = require("node-cmd");
 const prefix = "f/";
 const cooldown = new Set();
-const cdtime = 7;
-client.login("تــــۆکــیـــن لــئـرە دانی");
+const cdtime = 5;
+client.login("TYPE TOKEN");
 client.on("ready", () => {
   console.log(`${client.user.tag}`);
 });
@@ -29,7 +29,7 @@ client.on("ready", () => {
  client.on("ready", () => {
 setInterval(() => {
   client.user.setActivity(
-  `${prefix}help`,
+  `${prefix}help | Made By Arez`,
   );
 }, 2000);
 })
@@ -39,6 +39,8 @@ setInterval(() => {
       client.on("message", message => {
   if (message.content === prefix + "help") {
     let Dashboard = `
+__**${prefix}**__
+
 __Security Commands__ 
 > ${prefix}anti kick - [Number]
 > ${prefix}anti ban - [Number]
@@ -48,27 +50,26 @@ __Security Commands__
 > ${prefix}anti channelD - [Number]
 > ${prefix}anti bot - on/off]
 > ${prefix}setting
-__Info Commands__ 
-> user info , server info , 
+
+__**Info Commands**__ 
+> **user info , server info , 
 > servers , role , channel info 
-> my invites , badeg , avatar , 
-__Moderation Commands__ 
-> lock , unlock , clear , ban , kick
-> unban , mute , unmute , bans
-> Project By FiiX >>>
-__This is a little prefix__
-> [ ${prefix} ]
+> my invites , badeg , avatar** , 
+__**Moderation Commands**__ 
+> **lock , unlock , clear , ban , kick
+> unban , mute , unmute , bans**
+
 `;
     var addserver = `https://discord.com/api/oauth2/authorize?client_id=764487416748310570&permissions=8&scope=bot`;
-    var SUPPORT = `https://discord.gg/Zhwg47uFun`;
-    var WEBSITE = `https://securitexbot.wixsite.com/security`;
+    var SUPPORT = `TYPE LINK YOUR SERVER ❤`;
+    var WEBSITE = `TYPE YOUR WEB`;
     var EMBED = new Discord.MessageEmbed()
       .setTitle(`${message.author.username}`)
       .setDescription(
         `${Dashboard}
   **[invite bot ](${addserver})** | **[ Server Suppurt](${SUPPORT})** | **[ website](${WEBSITE})**`
       )
-      .setImage("https://cdn.discordapp.com/attachments/769678873197281300/819928547677569034/image0.gif");
+
     message.channel.send(EMBED);
     message.react("✅");
   }
@@ -103,7 +104,7 @@ if (!args[0]) return message.channel.send("__Please Mention A Role!__")
             true: "Yes"
         }
         let roleembed = new Discord.MessageEmbed()
-            .setColor("BLACK")
+            .setColor(arezcolor)
             .setAuthor("Role Info")
             .setThumbnail(message.guild.iconURL())
             .addField("**ID**", `\`${role.id}\``, true)
@@ -136,7 +137,7 @@ let channel = message.mentions.channels.first() || client.guilds.cache.get(messa
             .addField("**Channel Topic**", `${channel.topic || "No Description"}`)
             .addField("**Channel Created At**", channel.createdAt)
            .setFooter('')
-        .setColor("BLACK")
+        .setColor(arezcolor)
         message.channel.send(channelembed);
     }
 })
@@ -157,7 +158,7 @@ let member = await message.mentions.members.first() || message.guild.members.cac
             let index = 0;
             memberInvites.forEach(invite => index += invite.uses);
             let embed = new Discord.MessageEmbed()
-                .setColor("BLACK")
+                .setColor(arezcolor)
                 .setFooter('')
                
                 .setDescription(`Information on Invites of ${member.displayName}`)
@@ -210,7 +211,7 @@ const flags = {
           const userFlags = member.user.flags.toArray();
 
     var embed = new Discord.MessageEmbed()
-        .setColor('BLACK')
+        .setColor(arezcolor)
         .setTitle(`${member} Badges`)
             .setDescription(`❯ All Flags:** ${userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'None'}`)
             msg.channel.send(embed)
@@ -236,7 +237,7 @@ client.on('message',async message => {
       const embed = new Discord.MessageEmbed()
         .setTitle(`${member.username}'s avatar`)
         .setImage(avatar)
-        .setColor("BLACK")
+        .setColor(arezcolor)
         message.channel.send(embed);
     
   }})
@@ -337,7 +338,7 @@ if(!message.member.hasPermission('MANAGE_CHANNELS')) return
         
       
               .setFooter('')       
-                .setColor('BLACK') 
+                .setColor(arezcolor) 
                 .setTitle('CHANNEL CLOSED')
         message.channel.send(embed)
          
@@ -361,7 +362,7 @@ client.on('message', message => {
         if(!message.channel.guild) return message.reply('SORRY IM IN SERVER');
  let embed = new Discord.MessageEmbed()
                      .setFooter('')
-                .setColor('BLACK') 
+                .setColor(arezcolor) 
                 .setTitle('CHANNEL NOW OPEN')
         message.channel.send(embed)
          
@@ -410,7 +411,7 @@ const os = require('os')
 
         const embed = new Discord.MessageEmbed()
             .setThumbnail(message.guild.iconURL({dynamic : true}))
-            .setColor('BLACK')
+            .setColor(arezcolor)
             .setTitle(`${message.guild.name} server Info`)
             .addFields(
                 {
@@ -496,7 +497,7 @@ if(msg.content.startsWith(prefix+"kick")) {
             .addField('kicked by', msg.author)
             .addField('Reason', reason)
             .addField('Date', msg.createdAt)
-            .setColor('BLACK');
+            .setColor(arezcolor);
  
             msg.channel.send(x);
             toKick.kick();
@@ -533,7 +534,7 @@ const embed = new Discord.MessageEmbed()
 .setColor('RANDOM')
 .addField('Member ban', Ban)
 .addField('band by', message.author)
-.addField('Reason', hokar)
+.addField('Reason',)
 message.channel.send(embed)
 
 Ban.ban();
@@ -613,7 +614,7 @@ const antiSpam = new AntiSpam({
       .setFooter(`By: ${message.author.tag}`)
       .setAuthor(client.user.username)
       .setThumbnail(message.author.avatarURL)
-      .setColor("BLACK");
+      .setColor(arezcolor);
     message.author.send(embed);
     message.react("✅");
   }
@@ -641,7 +642,7 @@ const antiSpam = new AntiSpam({
       cooldown.delete(message.author.id);
     }, cdtime * 1000);
     let invite = new Discord.MessageEmbed()
-      .setColor("BLACK")
+      .setColor(arezcolor)
       .setAuthor(message.author.username, message.author.displayAvatarURL)
       .setThumbnail(message.author.avatarURL)
       .setTitle("" + 
@@ -650,7 +651,7 @@ const antiSpam = new AntiSpam({
         `https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot`
       );
     message.author.send(invite);
-    message.react("✨");
+    message.react("👍");
   }
 });
 
